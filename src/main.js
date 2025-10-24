@@ -48,7 +48,7 @@ app.post('/users/bulk', async(req, res) => {
   try{
 
     //extract array of users from the request body
-    const users = req.body.users;
+    const users = req.body; //expecting an array of user objects
     const createdUsers = await prisma.user.createMany({
       data: users, 
       skipDuplicates: true
