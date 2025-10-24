@@ -107,6 +107,23 @@ app.put("/users/:id", async (req, res) => {
   }
 });
 
+//define a route handler for patching a user by ID
+app.patch("/users/:id", async (req, res) => {
+  const userId = req.params.id;
+  const updateData = req.body; //expecting partial user data in the request body
+  try {
+    //update user in the database using Prisma
+    const patchedUser = await prisma.user.update({
+      where: { ID: userId },
+      data: updateData,
+    });
+    res.status(200).json(patchedUser);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "An error occurred while patching user" });
+  }
+});
+
 //define a route handler for deleting a user by ID
 app.delete("/users/:id", async (req, res) => {
   const userId = req.params.id;
