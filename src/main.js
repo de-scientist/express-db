@@ -13,7 +13,10 @@ app.use(express.json());
 //define a route handler for the users URL
 app.get("/users", async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      //only fetch users that are not deleted
+      where: { isDeleted: false },
+    });
     res.status(200).json(users);
   } catch (error) {
     console.log(error);
@@ -114,7 +117,7 @@ app.patch("/users/:id", async (req, res) => {
   const updateData = req.body; 
   //expecting partial user data in the request body
   try {
-    
+
     //update user in the database using Prisma
     const patchedUser = await prisma.user.update({
       where: { ID: userId },
