@@ -7,6 +7,9 @@ import { PrismaClient } from '@prisma/client';
 const app = express();
 const prisma = new PrismaClient();
 
+//middleware to parse JSON request bodies
+app.use(express.json());
+
 //define a route handler for the users URL
 app.get('/users', async(req, res) => {
   try{
@@ -22,7 +25,7 @@ app.get('/users', async(req, res) => {
 //define a route handler for creating a new user
 app.post('/users', async(req, res) => {
   try{
-    
+
     //extract user data from the request body
     const {firstName, lastName, emailAddress} = req.body;
     const newUser = await prisma.user.create({
@@ -65,7 +68,7 @@ app.get('/users/:id', async(req, res) => {
 });
 
 //define a route handler for deleting a user by ID
-app.delete('/users/:id', async(req, res) => {
+app.delete('/users:id', async(req, res) => {
   const userId = req.params.id;
   try {
 
