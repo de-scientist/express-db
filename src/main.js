@@ -111,7 +111,8 @@ app.put("/users/:id", async (req, res) => {
 //define a route handler for patching a user by ID
 app.patch("/users/:id", async (req, res) => {
   const userId = req.params.id;
-  const updateData = req.body; //expecting partial user data in the request body
+  const updateData = req.body; 
+  //expecting partial user data in the request body
   try {
     //update user in the database using Prisma
     const patchedUser = await prisma.user.update({
