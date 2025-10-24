@@ -43,7 +43,6 @@ app.post('/users', async(req, res) => {
   }
 });
 
-
 //create a route handler for creating multiple users
 app.post('/users/bulk', async(req, res) => {
   try{
