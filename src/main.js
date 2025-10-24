@@ -43,6 +43,7 @@ app.post('/users', async(req, res) => {
 app.get('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
+    
     //fetch user from the database using Prisma
     const user = await prisma.user.findUnique({
       //use AND to check if both conditions are met
@@ -65,7 +66,7 @@ app.get('/users/:id', async(req, res) => {
 app.delete('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
-    
+
     //soft-delete user by setting isDeleted to true
     const deletedUser = await prisma.user.update({
       where: {id: parseInt(userId)},
