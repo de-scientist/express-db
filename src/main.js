@@ -20,7 +20,7 @@ app.get('/users', async(req, res) => {
     console.log(error);
     res.status(500).json({error: 'An error occurred while fetching users'});
   }
-})
+});
 
 //define a route handler for creating a new user
 app.post('/users', async(req, res) => {
@@ -40,6 +40,24 @@ app.post('/users', async(req, res) => {
   catch(error){
     console.log(error);
     res.status(500).json({error: 'An error occurred while creating user'});
+  }
+});
+
+
+//create a route handler for creating multiple users
+app.post('/users/bulk', async(req, res) => {
+  try{
+
+    //extract array of users from the request body
+    const users = req.body.users;
+    const createdUsers = await prisma.user.createMany({
+      data: users
+    });
+    res.status(201).json(createdUsers);
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({error: 'An error occurred while creating users'});
   }
 });
 
