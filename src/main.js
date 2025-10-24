@@ -52,7 +52,7 @@ app.post('/users/bulk', async(req, res) => {
     const createdUsers = await prisma.user.createMany({
       data: users
     });
-    res.status(201).json(createdUsers);
+    res.status(201).json({message: `${createdUsers.count} users created successfully`});
   }
   catch(error){
     console.log(error);
