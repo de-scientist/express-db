@@ -73,7 +73,7 @@ app.get("/users/:id", async (req, res) => {
     //fetch user from the database using Prisma
     const user = await prisma.user.findUnique({
       //use AND to check if both conditions are met
-      where: { id: parseInt(userId) },
+      where: { ID: userId },
     });
     if (user) {
       res.status(200).json(user);
@@ -92,7 +92,7 @@ app.delete("/users:id", async (req, res) => {
   try {
     //soft-delete user by setting isDeleted to true
     const deletedUser = await prisma.user.update({
-      where: { id: parseInt(userId) },
+      where: { ID: userId },
       data: {
         isDeleted: true,
       },
