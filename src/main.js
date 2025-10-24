@@ -65,6 +65,7 @@ app.get('/users/:id', async(req, res) => {
 app.delete('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
+    
     //soft-delete user by setting isDeleted to true
     const deletedUser = await prisma.user.update({
       where: {id: parseInt(userId)},
