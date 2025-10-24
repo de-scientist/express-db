@@ -43,9 +43,10 @@ app.post('/users', async(req, res) => {
 app.get('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
-    
+
     //fetch user from the database using Prisma
     const user = await prisma.user.findUnique({
+      
       //use AND to check if both conditions are met
       where: {id: parseInt(userId)}
     });
