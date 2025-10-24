@@ -19,7 +19,7 @@ app.get('/users', async(req, res) => {
   }
 })
 
-
+//define a route handler for creating a new user
 app.post('/users', async(req, res) => {
   try{
     //extract user data from the request body
