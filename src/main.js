@@ -22,6 +22,7 @@ app.get('/users', async(req, res) => {
 //define a route handler for creating a new user
 app.post('/users', async(req, res) => {
   try{
+    
     //extract user data from the request body
     const {firstName, lastName, emailAddress} = req.body;
     const newUser = await prisma.user.create({
@@ -46,7 +47,7 @@ app.get('/users/:id', async(req, res) => {
 
     //fetch user from the database using Prisma
     const user = await prisma.user.findUnique({
-      
+
       //use AND to check if both conditions are met
       where: {id: parseInt(userId)}
     });
