@@ -13,3 +13,17 @@ datasource db {
   provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+  id        Int      @id @default(autoincrement()) @db.Int
+  firstName      String    @db.NVarChar(100)
+  lastName      String     @db.NVarChar(100)
+  emailAddress     String   @unique @db.NVarChar(255)
+ // posts     Post[]         @db("Posts")
+  isDeleted  Boolean  @default(false) @db.Bit
+  createdAt DateTime @default(now()) @db.DateTime
+  updatedAt DateTime @updatedAt @db.DateTime
+
+  @@map("Users")
+}

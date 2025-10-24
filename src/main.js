@@ -7,6 +7,21 @@ import { PrismaClient } from '@prisma/client';
 const app = express();
 const prisma = new PrismaClient();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //setup a basic route
 const PORT = 3000;
 app.listen(PORT, () => {
