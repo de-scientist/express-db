@@ -60,6 +60,8 @@ app.get('/users/:id', async(req, res) => {
     
   }
 });
+
+//define a route handler for deleting a user by ID
 app.delete('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
