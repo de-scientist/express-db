@@ -39,6 +39,7 @@ app.post('/users', async(req, res) => {
   }
 });
 
+//define a route handler for fetching a user by ID
 app.get('/users/:id', async(req, res) => {
   const userId = req.params.id;
   try {
