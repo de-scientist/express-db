@@ -86,6 +86,28 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
+
+//define a route handler for updating a user by ID
+app.put("/users/:id", async (req, res) => {
+  const userId = req.params.id;
+  const { firstName, lastName, emailAddress } = req.body;
+  try {
+    //update user in the database using Prisma
+    const updatedUser = await prisma.user.update({
+      where: { ID: userId },
+      data: {
+        firstName,
+        lastName,
+        emailAddress,
+      },
+    });
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "An error occurred while updating user" });
+  }
+});
+
 //define a route handler for deleting a user by ID
 app.delete("/users/:id", async (req, res) => {
   const userId = req.params.id;
