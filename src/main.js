@@ -114,6 +114,7 @@ app.patch("/users/:id", async (req, res) => {
   const updateData = req.body; 
   //expecting partial user data in the request body
   try {
+    
     //update user in the database using Prisma
     const patchedUser = await prisma.user.update({
       where: { ID: userId },
