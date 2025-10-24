@@ -56,7 +56,6 @@ app.post("/users/bulk", async (req, res) => {
     //use Prisma's createMany method to insert multiple users
     const createdUsers = await prisma.user.createMany({
       data: users,
-      skipDuplicates: true,
     });
     res
       .status(201)
