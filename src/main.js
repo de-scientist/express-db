@@ -86,7 +86,6 @@ app.get("/users/:id", async (req, res) => {
   }
 });
 
-
 //define a route handler for updating a user by ID
 app.put("/users/:id", async (req, res) => {
   const userId = req.params.id;
