@@ -107,6 +107,7 @@ app.put("/users/:id", async (req, res) => {
   }
 });
 
+
 //define a route handler for patching a user by ID
 app.patch("/users/:id", async (req, res) => {
   const userId = req.params.id;
