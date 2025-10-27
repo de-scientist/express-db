@@ -7,11 +7,11 @@ This project demonstrates how to build and test a backend REST API that interact
 
 ## 🚀 Tech Stack
 
-- **Node.js** – JavaScript runtime environment  
-- **Express.js** – Minimal and flexible web framework  
-- **Prisma ORM** – Elegant database toolkit for Node.js  
-- **MSSQL** – Relational database (configurable)  
-- **Postman** – API testing and debugging tool  
+- **Node.js** – JavaScript runtime environment
+- **Express.js** – Minimal and flexible web framework
+- **Prisma ORM** – Elegant database toolkit for Node.js
+- **MSSQL** – Relational database (configurable)
+- **Postman** – API testing and debugging tool
 
 ---
 
@@ -20,7 +20,6 @@ npm install
 
 3️⃣ Initialize Prisma
 npx prisma init
-
 
 Update your .env file with your database URL, for example:
 
@@ -46,20 +45,19 @@ Adds a new user to the database.
 Request Body:
 
 {
-  "firstName": "John",
-  "lastName": "Doe",
-  "emailAddress": "john.doe@example.com"
+"firstName": "John",
+"lastName": "Doe",
+"emailAddress": "john.doe@example.com"
 }
-
 
 Response:
 
 {
-  "ID": "generated-uuid",
-  "firstName": "John",
-  "lastName": "Doe",
-  "emailAddress": "john.doe@example.com",
-  "isDeleted": false
+"ID": "generated-uuid",
+"firstName": "John",
+"lastName": "Doe",
+"emailAddress": "john.doe@example.com",
+"isDeleted": false
 }
 
 🔍 READ (GET)
@@ -71,13 +69,13 @@ GET /users/:id – Fetch a single user by ID
 Response Example:
 
 [
-  {
-    "ID": "bf6543c9-ec0c-43d8-9dd0-52480a9b762a",
-    "firstName": "Jane",
-    "lastName": "Smith",
-    "emailAddress": "jane.smith@example.com",
-    "isDeleted": false
-  }
+{
+"ID": "bf6543c9-ec0c-43d8-9dd0-52480a9b762a",
+"firstName": "Jane",
+"lastName": "Smith",
+"emailAddress": "jane.smith@example.com",
+"isDeleted": false
+}
 ]
 
 ✏️ UPDATE (PUT)
@@ -91,9 +89,9 @@ Completely replaces a user’s record with new data.
 Request Body:
 
 {
-  "firstName": "Updated",
-  "lastName": "User",
-  "emailAddress": "updated@example.com"
+"firstName": "Updated",
+"lastName": "User",
+"emailAddress": "updated@example.com"
 }
 
 🧩 PATCH (Partial Update)
@@ -107,7 +105,7 @@ Updates only specific fields in the user record.
 Request Body (example):
 
 {
-  "emailAddress": "newmail@example.com"
+"emailAddress": "newmail@example.com"
 }
 
 🗑️ DELETE (Soft Delete)
@@ -121,14 +119,14 @@ Soft-deletes a user by marking isDeleted as true instead of permanently removing
 Response:
 
 {
-  "message": "User marked as deleted",
-  "ID": "bf6543c9-ec0c-43d8-9dd0-52480a9b762a"
+"message": "User marked as deleted",
+"ID": "bf6543c9-ec0c-43d8-9dd0-52480a9b762a"
 }
 
 🧠 Understanding PUT vs PATCH
-Method	Action	Example Use Case
-PUT	Replaces the entire record	When you want to overwrite a user’s full details
-PATCH	Updates part of a record	When you only want to change one field like an email
+Method Action Example Use Case
+PUT Replaces the entire record When you want to overwrite a user’s full details
+PATCH Updates part of a record When you only want to change one field like an email
 🧪 Testing the API in Postman
 
 Open Postman
