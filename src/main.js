@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 app.use(express.json());
 
 //define a route handler for the users URL
-app.get("/users", async (req, res) => {
+app.get("/users", async (_req, res) => {
   try {
     const users = await prisma.user.findMany({
       //only fetch users that are not deleted
@@ -75,7 +75,7 @@ app.get("/users/:id", async (req, res) => {
   try {
     //fetch user from the database using Prisma
     const user = await prisma.user.findUnique({
-      //use AND to check if both conditions are met
+      
       where: { ID: userId },
     });
     if (user) {
